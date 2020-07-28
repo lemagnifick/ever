@@ -173,7 +173,7 @@ class Order extends DBObject<IOrder, IOrderCreateObject> implements IOrder {
 	 * @type {string}
 	 * @memberof Order
 	 */
-	@Schema({ type: string, required: false })
+	@Schema({ type: String, required: false })
 	@Column()
 	deliveryNotes?: string;
 
