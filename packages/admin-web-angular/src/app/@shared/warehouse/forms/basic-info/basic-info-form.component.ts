@@ -30,6 +30,18 @@ export type WarehouseBasicInfo = Pick<
 	| 'ordersShortProcess'
 	| 'orderCancelation'
 >;
+const serviceRegex = 'cake|drinks|food|clean|med|messenger|pizza|mart';
+
+enum services {
+	cake = 'Cake',
+	drinks = 'Drinks',
+	food = 'Food',
+	clean = 'Clean',
+	med = 'Med',
+	messenger = 'Messenger',
+	pizza = 'Pizza',
+	mart = 'Mart',
+}
 
 @Component({
 	selector: 'ea-warehouse-basic-info-form',
@@ -62,7 +74,7 @@ export class BasicInfoFormComponent implements OnInit {
 					Validators.maxLength(255),
 				],
 			],
-			service: ['', [Validators.minLength(3), Validators.maxLength(255)]],
+			service: ['', [Validators.pattern(serviceRegex)]],
 			logo: [
 				'',
 				[

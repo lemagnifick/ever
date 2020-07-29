@@ -36,6 +36,18 @@ export type WarehouseManageTabsDetails = Pick<
 	| 'ordersShortProcess'
 	| 'orderCancelation'
 >;
+const serviceRegex = 'cake|drinks|food|clean|med|messenger|pizza|mart';
+
+enum services {
+	cake = 'Cake',
+	drinks = 'Drinks',
+	food = 'Food',
+	clean = 'Clean',
+	med = 'Med',
+	messenger = 'Messenger',
+	pizza = 'Pizza',
+	mart = 'Mart',
+}
 
 @Component({
 	selector: 'ea-warehouse-manage-tabs-details',
@@ -76,7 +88,7 @@ export class WarehouseManageTabsDetailsComponent
 	constructor(
 		private readonly _carrierRouter: CarrierRouter,
 		private readonly _translateService: TranslateService
-	) { }
+	) {}
 
 	get service() {
 		return this.form.get('service');
@@ -159,13 +171,7 @@ export class WarehouseManageTabsDetailsComponent
 					Validators.maxLength(255),
 				],
 			],
-			service: [
-				'',
-				[
-					Validators.minLength(3),
-					Validators.maxLength(255),
-				],
-			],
+			service: ['', [Validators.pattern(serviceRegex)]],
 			logo: [
 				'',
 				[
@@ -231,23 +237,23 @@ export class WarehouseManageTabsDetailsComponent
 			logo: basicInfo.logo,
 			...(basicInfo.hasRestrictedCarriers
 				? {
-					hasRestrictedCarriers: basicInfo.hasRestrictedCarriers,
-					carriersIds: basicInfo.carriersIds,
-				}
+						hasRestrictedCarriers: basicInfo.hasRestrictedCarriers,
+						carriersIds: basicInfo.carriersIds,
+				  }
 				: {}),
 			...(basicInfo.hasRestrictedCarriers &&
-				basicInfo.carriersIds &&
-				basicInfo.carriersIds.length
+			basicInfo.carriersIds &&
+			basicInfo.carriersIds.length
 				? {
-					useOnlyRestrictedCarriersForDelivery:
-						basicInfo.useOnlyRestrictedCarriersForDelivery,
-					preferRestrictedCarriersForDelivery:
-						basicInfo.preferRestrictedCarriersForDelivery,
-				}
+						useOnlyRestrictedCarriersForDelivery:
+							basicInfo.useOnlyRestrictedCarriersForDelivery,
+						preferRestrictedCarriersForDelivery:
+							basicInfo.preferRestrictedCarriersForDelivery,
+				  }
 				: {
-					useOnlyRestrictedCarriersForDelivery: false,
-					preferRestrictedCarriersForDelivery: false,
-				}),
+						useOnlyRestrictedCarriersForDelivery: false,
+						preferRestrictedCarriersForDelivery: false,
+				  }),
 			orderCancelation: {
 				enabled: basicInfo.enabledOrderCancelation,
 				onState: Number(basicInfo.stateOrderCancelation),
