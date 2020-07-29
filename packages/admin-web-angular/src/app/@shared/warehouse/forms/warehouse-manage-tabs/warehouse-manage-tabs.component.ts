@@ -14,6 +14,7 @@ import { PaymentsSettingsFormComponent } from '../payments-settings/payments-set
 export type WarehouseManageTabs = Pick<
 	IWarehouseCreateObject,
 	| 'name'
+	| 'service'
 	| 'logo'
 	| 'isActive'
 	| 'username'
