@@ -51,6 +51,7 @@ export interface IWarehouseCreateObject extends DBCreateObject {
 	products?: IWarehouseProductCreateObject[];
 
 	name: string;
+	service: string;
 
 	/**
 	 * URL of Merchant/Warehouse brand logo

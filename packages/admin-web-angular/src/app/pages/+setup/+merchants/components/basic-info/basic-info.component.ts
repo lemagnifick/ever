@@ -38,11 +38,12 @@ export class SetupMerchantBasicInfoComponent implements OnInit, OnDestroy {
 	invalidUrl: boolean;
 	basicInfoModel = {
 		name: '',
+		service: '',
 		logo: '',
 		barcodeData: '',
 	};
 
-	constructor(private translateService: TranslateService) {}
+	constructor(private translateService: TranslateService) { }
 
 	ngOnInit(): void {
 		this.getUploaderPlaceholderText();

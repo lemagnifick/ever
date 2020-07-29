@@ -16,6 +16,7 @@ type Warehouse {
 	# TODO products: [WarehouseProduct!]!
 
 	name: String!
+	service: String
 
 	# Url of the logo
 	logo: String!
@@ -55,6 +56,7 @@ input WarehouseCreateInput {
 	geoLocation: GeoLocationCreateInput!
 
 	name: String!
+	service: String
 	logo: String! # the url of it
 	username: String!
 
@@ -91,6 +93,7 @@ input WarehousesFindInput {
 	isPaymentEnabled: Boolean
 
 	name: String
+	service: String
 
 	# Url of the logo
 	logo: String

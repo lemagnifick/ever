@@ -19,9 +19,6 @@ export default class FakeDataWarehouses {
 	readonly registrationInputs: Readonly<{
 		generate(): IWarehouseRegistrationInput;
 		pizzaRestaurant: IWarehouseRegistrationInput;
-		pizzaHit: IWarehouseRegistrationInput;
-		pizzaTroya: IWarehouseRegistrationInput;
-		dominexPizza: IWarehouseRegistrationInput;
 	}> =
 		lng && lat
 			? {
@@ -31,6 +28,7 @@ export default class FakeDataWarehouses {
 						return {
 							warehouse: {
 								name: `Restaurant ${warehouseName}`,
+								service: 'pizza',
 								isActive: true,
 								username: faker.internet.userName(),
 								logo: getFakeImg(200, 200, 75, warehouseName),
@@ -66,6 +64,7 @@ export default class FakeDataWarehouses {
 					pizzaRestaurant: {
 						warehouse: {
 							name: 'Pizza Dan',
+							service: 'pizza',
 							isActive: true,
 							username: 'restaurant_pizza',
 							logo: getFakeImg(200, 200, 75, 'Pizza Dan'),
@@ -96,108 +95,6 @@ export default class FakeDataWarehouses {
 						},
 						password: '123456',
 					} as any,
-
-					pizzaHit: {
-						warehouse: {
-							name: 'Pizza Hit',
-							isActive: true,
-							username: 'hut_pizza',
-							logo: getFakeImg(200, 200, 75, 'Pizza Hit'),
-							contactEmail: faker.internet.email(),
-							contactPhone: faker.phone.phoneNumber(),
-							forwardOrdersUsing: [
-								ForwardOrdersMethod.Unselected,
-							],
-							ordersEmail: null,
-							ordersPhone: null,
-							isManufacturing: true,
-							isCarrierRequired: true,
-							hasRestrictedCarriers: false,
-							usedCarriersIds: [],
-							products: [],
-							geoLocation: {
-								city: 'Ashdod',
-								postcode: '77452',
-								streetAddress: 'HaAtsmaut',
-								house: '125',
-								countryId: Country.IL,
-								loc: {
-									type: 'Point',
-									coordinates: [lng - 0.05, lat - 0.09],
-								},
-							},
-							_createdAt: this._getRandomDateRange(),
-						},
-						password: '123456',
-					} as any,
-
-					pizzaTroya: {
-						warehouse: {
-							name: 'Pizza Troya',
-							isActive: true,
-							username: 'trova_pizza',
-							logo: getFakeImg(200, 200, 75, 'Pizza Troya'),
-							contactEmail: faker.internet.email(),
-							contactPhone: faker.phone.phoneNumber(),
-							forwardOrdersUsing: [
-								ForwardOrdersMethod.Unselected,
-							],
-							ordersEmail: null,
-							ordersPhone: null,
-							isManufacturing: false,
-							isCarrierRequired: false,
-							hasRestrictedCarriers: false,
-							usedCarriersIds: [],
-							products: [],
-							geoLocation: {
-								city: 'Ashdod',
-								postcode: '77452',
-								streetAddress: 'HaAtsmaut',
-								house: '128',
-								countryId: Country.IL,
-								loc: {
-									type: 'Point',
-									coordinates: [lng + 0.08, lat + 0.07],
-								},
-							},
-							_createdAt: this._getRandomDateRange(),
-						} as any,
-						password: '123456',
-					},
-
-					dominexPizza: {
-						warehouse: {
-							name: 'Dominex Pizza',
-							isActive: true,
-							username: 'dominex_pizza',
-							logo: getFakeImg(200, 200, 75, 'Pizza Pizza'),
-							contactEmail: faker.internet.email(),
-							contactPhone: faker.phone.phoneNumber(),
-							forwardOrdersUsing: [
-								ForwardOrdersMethod.Unselected,
-							],
-							ordersEmail: null,
-							ordersPhone: null,
-							isManufacturing: true,
-							isCarrierRequired: true,
-							hasRestrictedCarriers: false,
-							usedCarriersIds: [],
-							products: [],
-							geoLocation: {
-								city: 'Ashdod',
-								postcode: '77452',
-								streetAddress: 'HaAtsmaut',
-								house: '125',
-								countryId: Country.IL,
-								loc: {
-									type: 'Point',
-									coordinates: [lng - 0.08, lat - 0.07],
-								},
-							},
-							_createdAt: this._getRandomDateRange(),
-						} as any,
-						password: '123456',
-					},
 			  }
 			: null;
 

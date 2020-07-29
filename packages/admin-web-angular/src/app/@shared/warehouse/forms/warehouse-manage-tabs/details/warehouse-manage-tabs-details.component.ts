@@ -24,6 +24,7 @@ import { TranslateService } from '@ngx-translate/core';
 export type WarehouseManageTabsDetails = Pick<
 	IWarehouseCreateObject,
 	| 'name'
+	| 'service'
 	| 'logo'
 	| 'isActive'
 	| 'hasRestrictedCarriers'
@@ -75,7 +76,11 @@ export class WarehouseManageTabsDetailsComponent
 	constructor(
 		private readonly _carrierRouter: CarrierRouter,
 		private readonly _translateService: TranslateService
-	) {}
+	) { }
+
+	get service() {
+		return this.form.get('service');
+	}
 
 	get name() {
 		return this.form.get('name');
@@ -154,6 +159,13 @@ export class WarehouseManageTabsDetailsComponent
 					Validators.maxLength(255),
 				],
 			],
+			service: [
+				'',
+				[
+					Validators.minLength(3),
+					Validators.maxLength(255),
+				],
+			],
 			logo: [
 				'',
 				[
@@ -194,6 +206,7 @@ export class WarehouseManageTabsDetailsComponent
 	getValue(): WarehouseManageTabsDetails {
 		const basicInfo = this.form.getRawValue() as {
 			name: string;
+			service: string;
 			logo: string;
 			isActive: boolean;
 			isManufacturing: boolean;
@@ -214,26 +227,27 @@ export class WarehouseManageTabsDetailsComponent
 			isManufacturing: basicInfo.isManufacturing,
 			isCarrierRequired: basicInfo.isCarrierRequired,
 			name: basicInfo.name,
+			service: basicInfo.service,
 			logo: basicInfo.logo,
 			...(basicInfo.hasRestrictedCarriers
 				? {
-						hasRestrictedCarriers: basicInfo.hasRestrictedCarriers,
-						carriersIds: basicInfo.carriersIds,
-				  }
+					hasRestrictedCarriers: basicInfo.hasRestrictedCarriers,
+					carriersIds: basicInfo.carriersIds,
+				}
 				: {}),
 			...(basicInfo.hasRestrictedCarriers &&
-			basicInfo.carriersIds &&
-			basicInfo.carriersIds.length
+				basicInfo.carriersIds &&
+				basicInfo.carriersIds.length
 				? {
-						useOnlyRestrictedCarriersForDelivery:
-							basicInfo.useOnlyRestrictedCarriersForDelivery,
-						preferRestrictedCarriersForDelivery:
-							basicInfo.preferRestrictedCarriersForDelivery,
-				  }
+					useOnlyRestrictedCarriersForDelivery:
+						basicInfo.useOnlyRestrictedCarriersForDelivery,
+					preferRestrictedCarriersForDelivery:
+						basicInfo.preferRestrictedCarriersForDelivery,
+				}
 				: {
-						useOnlyRestrictedCarriersForDelivery: false,
-						preferRestrictedCarriersForDelivery: false,
-				  }),
+					useOnlyRestrictedCarriersForDelivery: false,
+					preferRestrictedCarriersForDelivery: false,
+				}),
 			orderCancelation: {
 				enabled: basicInfo.enabledOrderCancelation,
 				onState: Number(basicInfo.stateOrderCancelation),

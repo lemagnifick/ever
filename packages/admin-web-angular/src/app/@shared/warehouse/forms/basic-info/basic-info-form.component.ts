@@ -19,6 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
 export type WarehouseBasicInfo = Pick<
 	IWarehouseCreateObject,
 	| 'name'
+	| 'service'
 	| 'logo'
 	| 'isActive'
 	| 'username'
@@ -61,6 +62,7 @@ export class BasicInfoFormComponent implements OnInit {
 					Validators.maxLength(255),
 				],
 			],
+			service: ['', [Validators.minLength(3), Validators.maxLength(255)]],
 			logo: [
 				'',
 				[
@@ -98,6 +100,7 @@ export class BasicInfoFormComponent implements OnInit {
 	getValue(): WarehouseBasicInfo {
 		const basicInfo = this.form.getRawValue() as {
 			name: string;
+			service: string;
 			logo: string;
 			isActive: boolean;
 			username: string;
@@ -117,6 +120,7 @@ export class BasicInfoFormComponent implements OnInit {
 		return {
 			isActive: basicInfo.isActive,
 			name: basicInfo.name,
+			service: basicInfo.service,
 			username: basicInfo.username,
 			logo: basicInfo.logo,
 			...(basicInfo.hasRestrictedCarriers
@@ -196,6 +200,10 @@ export class BasicInfoFormComponent implements OnInit {
 
 	get name() {
 		return this.form.get('name');
+	}
+
+	get service() {
+		return this.form.get('service');
 	}
 
 	get logo() {

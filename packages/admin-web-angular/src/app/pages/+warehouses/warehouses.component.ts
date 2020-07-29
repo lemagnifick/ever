@@ -171,6 +171,7 @@ export class WarehousesComponent implements AfterViewInit, OnDestroy {
 					id: warehouse.id,
 					image: warehouse.logo || WarehousesComponent.noInfoSign,
 					name: warehouse.name || WarehousesComponent.noInfoSign,
+					service: warehouse.service || WarehousesComponent.noInfoSign,
 					email:
 						warehouse.contactEmail ||
 						WarehousesComponent.noInfoSign,
@@ -183,10 +184,10 @@ export class WarehousesComponent implements AfterViewInit, OnDestroy {
 					address: `st. ${
 						warehouse.geoLocation.streetAddress ||
 						WarehousesComponent.noInfoSign
-					}, hse. № ${
+						}, hse. № ${
 						warehouse.geoLocation.house ||
 						WarehousesComponent.noInfoSign
-					}`,
+						}`,
 					ordersQty: merchantOrders ? merchantOrders.ordersCount : 0,
 					warehouseInfo: warehouse,
 				};
@@ -215,6 +216,7 @@ export class WarehousesComponent implements AfterViewInit, OnDestroy {
 			this._translateService.get('Id'),
 			getTranslate('IMAGE'),
 			getTranslate('NAME'),
+			getTranslate('SERVICE'),
 			getTranslate('EMAIL'),
 			getTranslate('PHONE'),
 			getTranslate('CITY'),
@@ -223,7 +225,7 @@ export class WarehousesComponent implements AfterViewInit, OnDestroy {
 		)
 			.pipe(takeUntil(this.ngDestroy$))
 			.subscribe(
-				([id, image, name, email, phone, city, address, orders]) => {
+				([id, image, name, service, email, phone, city, address, orders]) => {
 					this.settingsSmartTable = {
 						actions: false,
 						selectMode: 'multi',
@@ -246,6 +248,10 @@ export class WarehousesComponent implements AfterViewInit, OnDestroy {
 								onComponentInitFunction: (instance) => {
 									instance.redirectPage = 'stores';
 								},
+							},
+							service: {
+								title: service,
+								class: 'warehouse-service',
 							},
 							email: {
 								title: email,

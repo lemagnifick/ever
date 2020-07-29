@@ -162,7 +162,7 @@
 		"TITLE": "Gérer l'entrepôt",
 		"MANAGE_STORE": "Gérer le magasin",
 		"SAVE": "ENREGISTRER",
-		"NAME": "Prénom",
+		"NAME": "Nom",
 		"USERNAME": "Nom d'utilisateur",
 		"PASSWORD": "Mot de passe",
 		"COUNTRY": "Pays",
@@ -190,6 +190,7 @@
 			"ACCOUNT": "Compte",
 			"CONTACT_INFO": "Contact Info",
 			"LOCATION": "Localisation",
+			"PAYMENT": "Paiement",
 			"DELIVERY_ZONES": "Zones de livraison"
 		}
 	},
@@ -201,7 +202,8 @@
 		"SHOW_ON_MAP": "Montrer sur la carte",
 		"SMART_TABLE_COLUMNS": {
 			"IMAGE": "Image",
-			"NAME": "Prénom",
+			"NAME": "Nom",
+			"SERVICE": "Service",
 			"EMAIL": "Email",
 			"PHONE": "Téléphone",
 			"CITY": "Ville",
@@ -232,10 +234,11 @@
 		},
 		"MUTATION": {
 			"TITLE": "Créer un nouvel entrepôt",
-			"NAME": "Prénom",
+			"NAME": "Nom",
 			"LOGO": "Logo",
 			"PHOTO": "Photo",
 			"IS_ACTIVE": "C'est actif",
+			"ORDERS_SHORT_PROCESS": "Processus court des commandes",
 			"PRODUCTS_MANUFACTURING": "Fabrication de produits",
 			"CARRIER_REQUIRED": "Transporteur requis",
 			"RIGHT_NOW": "Maintenant",
@@ -251,6 +254,9 @@
 			"NEW_PASSWORD": "Nouveau Mot de Passe",
 			"CONFIRM_PASSWORD": "Confirmation du Mot de passe",
 			"PASSWORDS_DO_NOT_MATCH": "Les mots de passe ne correspondent pas",
+			"SELECT_SHAPE_TO_ADD_ZONE": "Sélectionnez la forme pour ajouter une nouvelle zone",
+			"CIRCLE": "Cercle",
+			"SHAPE": "Forme",
 			"PASSWORD": "Mot de passe",
 			"COUNTRY": "Pays",
 			"USA": "Etats-Unis",
@@ -263,9 +269,24 @@
 			"AUTO_DETECT_COORDINATES": "Détection automatique des coordonnées",
 			"CARRIERS": "Les transporteurs",
 			"USE_ONLY_SPECIFIC_CARRIERS": "N'utilisez que des transporteurs spécifiques",
+			"UNALLOWED_ORDER_CANCELATION": "Annulation de commande non autorisée",
+			"ORDER_CANCELATION_OPTIONS": {
+				"ORDERING": "Après la commande",
+				"START_PROCESSING": "Après le début du traitement",
+				"START_ALLOCATION": "Après le démarrage de l'allocation",
+				"ALLOCATED": "Après attribution",
+				"START_PACKAGING": "Après le démarrage de l'emballage",
+				"PACKAGED": "après l'emballage",
+				"CARRIER_TAKE_WORK": "Après le travail du transporteur",
+				"CARRIER_GOT_IT": "Après que le transporteur l'ait obtenu",
+				"CARRIER_START_DELIVERY": "Après le début de la livraison par le transporteur",
+				"DELIVERED": "Après livraison"
+			},
 			"ERRORS": {
 				"NAME_IS_REQUIRED": "Le nom de l'entrepôt est requis",
+				"SERVICE_IS_REQUIRED": "Le service est requis",
 				"NAME_ATLEAST_3_CHARS": "Le nom doit comporter au moins 3 caractères",
+				"SERVICE_ATLEAST_3_CHARS": "Le service doit comporter au moins 3 caractères",
 				"NAME_MORE_THAN_255_CHARS": "Le nom ne peut pas comporter plus de 255 caractères",
 				"LOGO_IS_REQUIRED": "Le logo est requis",
 				"INVALID_URL": "Entrez une URL d'image valide ou recherchez un fichier",
@@ -280,6 +301,7 @@
 				"COORDINATES_ARE_REQUIRED": "Les coordonnées sont obligatoires",
 				"COUNTRY_IS_REQUIRED": "Pays requis"
 			},
+			"SERVICE": "Service",
 			"WIZARD_TITLES": {
 				"BASIC_INFO": "Informations de base",
 				"CONTACT_INFO": "Informations de contact",
@@ -414,7 +436,7 @@
 		},
 		"USER_MUTATION": {
 			"TITLE": "Créer un client",
-			"NAME": "Prénom",
+			"NAME": "Nom",
 			"EMAIL": "Email",
 			"COUNTRY": "Pays",
 			"CITY": "Ville",
@@ -639,7 +661,7 @@
 		"TRACK": "chemin",
 		"SMART_TABLE_COLUMNS": {
 			"IMAGE": "Image",
-			"NAME": "Prénom",
+			"NAME": "Nom",
 			"PHONE": "Téléphone",
 			"STATUS": "Statut",
 			"ADDRESS": "Adresse",
@@ -910,7 +932,7 @@
 	"Description": "Description",
 	"Details": "Details",
 	"Price": "Prix",
-	"CATEGORY": "Category",
+	"CATEGORY": "catégorie",
 	"LANGUAGE": "Langue",
 	"BROWSE": "Parcourir",
 	"ENGLISH": "Anglais",
@@ -1067,7 +1089,8 @@
 			},
 			"PAYMENTS": {
 				"PAYMENTS": "Payments",
-				"ALLOW_ONLINE_PAYMENT": "Allow online payments?",
+				"ALLOW_ONLINE_PAYMENT": "Autoriser les paiements en ligne?",
+				"ALLOW_CASH_PAYMENT": "Autoriser les paiements en espèces?",
 				"STRIPE": {
 					"PAY_BUTTON_TEXT": "Pay Button text",
 					"CURRENCY": "Currency",
@@ -1114,20 +1137,20 @@
 				"ADD_YOUR_CARRIERS": "Add your carriers"
 			},
 			"ORDERS_SETTINGS": {
-				"ORDERS_SETTINGS": "Orders Settings",
+				"ORDERS_SETTINGS": "Autres reglages",
 				"ORDER_BARCODE_QR_CODE_TYPES": "Order Barcode/QR code types"
 			},
 			"PRODUCT_CATEGORIES": {
-				"PRODUCT_CATEGORIES": "Product categories",
-				"ADD_OWN_PRODUCT_CATEGORY": "Add own product category"
+				"PRODUCT_CATEGORIES": "Catégorie",
+				"ADD_OWN_PRODUCT_CATEGORY": "Ajoutez votre propre catégorie"
 			},
 			"PRODUCTS": {
-				"PRODUCTS": "Products",
-				"SELECT_FROM_PRODUCTS_CATALOG": "Select from products catalog",
-				"CREATE_PRODUCT": "Create product",
-				"EDIT_PRODUCT": "Edit product",
-				"ADD_PRODUCT": "Add product",
-				"CREATE_NEW_PRODUCT": "Create new product"
+				"PRODUCTS": "Produits",
+				"SELECT_FROM_PRODUCTS_CATALOG": "Choisir des produits depuis le catalogue",
+				"CREATE_PRODUCT": "Creer un produit",
+				"EDIT_PRODUCT": "Editer le produit",
+				"ADD_PRODUCT": "Nouveau produit",
+				"CREATE_NEW_PRODUCT": "Creer un nouveau produit"
 			}
 		}
 	}

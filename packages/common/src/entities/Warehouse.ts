@@ -118,6 +118,16 @@ class Warehouse extends DBObject<IWarehouse, IWarehouseCreateObject>
 	name: string;
 
 	/**
+	 * The service of Store/Merchant
+	 *
+	 * @type {string}
+	 * @memberof Warehouse
+	 */
+	@Types.String()
+	@Column()
+	service: string;
+
+	/**
 	 * The URL of store brand logo
 	 *
 	 * @type {string}

@@ -123,6 +123,7 @@ export class WarehousesService {
 							_id
 							_createdAt
 							name
+							service
 							contactEmail
 							contactPhone
 							logo
