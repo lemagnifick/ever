@@ -22,8 +22,8 @@
 		"CANT_ACCESS_LOCATION_GET_IN_BY_ADDRESS": "Can't access your location, please try to get in by address.",
 		"GET_IN_BY_ADDRESS": "Sign up by Address",
 		"GET_IN": "Get inside!",
-		"YOUR_ADDRESS": "Let us know your Address",
-		"LAUNCH_NOTIFICATION": "We promise to show only relevant products according to your address",
+		"YOUR_ADDRESS": "Please register to continue",
+		"LAUNCH_NOTIFICATION": "Only relevant products according to your address",
 		"BY_CODE": {
 			"OR_WHAT": "sign up by Invite",
 			"INVITED": "Sign in with Invite Code",
@@ -35,7 +35,7 @@
 		"DETECTING_LOCATION": "Please wait, we attempting to detect your current address..."
 	},
 	"PRODUCTS_VIEW": {
-		"TITLE": "Products",
+		"TITLE": " : Products",
 		"BUY_BUTTON": {
 			"PRE": "Buy for ",
 			"SUF": ""
@@ -80,7 +80,7 @@
 		"TITLE": "Services"
 	},
 	"PROFILE_VIEW": {
-		"TITLE": "Profile",
+		"TITLE": "My Account",
 		"NAME": "Name",
 		"NAME_INPUT": "Change Name",
 		"TELEPHONE": "Telephone",
@@ -104,9 +104,9 @@
 		},
 		"STATUSES": [
 			{
-				"TITLE": "We're preparing the order!",
-				"DETAILS": "You will get it in %t minutes.",
-				"NOT_PAID_NOTE": "Prepare your wallet (%s in cash)."
+				"TITLE": "Your order is being processed...",
+				"DETAILS": "Our delivery agent will contact you in %t minutes.",
+				"NOT_PAID_NOTE": "Please have the amount of (%s in cash). You will be able to pay in cash, by Mobile Money or Orange Money. Standard delivery cost (1500 XAF)"
 			},
 			{
 				"TITLE": "Carrier on the way!",
@@ -130,7 +130,7 @@
 			"NOT_PAID_NOTE": "Prepare your wallet (%s in cash)."
 		},
 		"DELIVERY_STATUS": {
-			"WE": "The Store",
+			"WE": "Store",
 			"CARRIER": "Carrier",
 			"YOU": "You"
 		},
@@ -189,7 +189,7 @@
 				"DIVER_TITLE": "Settings",
 				"ITEMS": {
 					"LANGUAGE": "Language",
-					"PROFILE": "Profile"
+					"PROFILE": "My account"
 				}
 			},
 			"INFO": {
@@ -223,9 +223,9 @@
 		]
 	},
 	"MERCHANTS_VIEW": {
-		"CLOSE_TO_YOU": "Merchants close to you",
-		"NAME": "Merchant name",
-		"WITH_NAME": "Merchants with name"
+		"CLOSE_TO_YOU": "Stores close to you",
+		"NAME": "Store name",
+		"WITH_NAME": "Stores with name"
 	},
 	"NO_SERVER_VIEW": {
 		"NO_SERVER": "Server connection is lost"
@@ -254,7 +254,7 @@
 	"ORDER_INFO": "Order Info",
 	"CLOSE": "Close",
 	"SCAN": "Scan",
-	"MERCHANTS": "Merchants",
+	"MERCHANTS": "Stores",
 	"NOT_FOUND": "Not Found!",
 	"IN_STORE": "In Store",
 	"EXIT_STORE": "Exit Store",
@@ -272,6 +272,7 @@
 	"SELECT": "Select",
 	"LOCATION_NOTES": "Location Notes",
 	"ENTER_NOTES_HERE": "Enter notes here",
+	"ORDER_STATUS": "Order Status",
 
 	"ALTERNATIVE_DELIVERY": "Where should we deliver instead ??"
 }

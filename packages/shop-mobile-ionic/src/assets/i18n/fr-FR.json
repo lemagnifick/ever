@@ -21,9 +21,9 @@
 		"CANT_ACCESS_LOCATION": "Ne peut déterminer votre position.",
 		"CANT_ACCESS_LOCATION_GET_IN_BY_ADDRESS": "Ne peut déterminer votre position, renseignez votre adresse svp.",
 		"GET_IN_BY_ADDRESS": "S'inscrire par l'adresse",
-		"GET_IN": "Entrez !",
-		"YOUR_ADDRESS": "Renseignez votre adresse",
-		"LAUNCH_NOTIFICATION": "Notre promesse : Essentiellement des produits de proximité.",
+		"GET_IN": "Valider",
+		"YOUR_ADDRESS": "Veuillez vous enregistrer pour continuer",
+		"LAUNCH_NOTIFICATION": "Essentiellement des produits de proximité.",
 		"BY_CODE": {
 			"OR_WHAT": "S'inscrire par Invitation",
 			"INVITED": "Se connecter avec un Code Invitation",
@@ -35,7 +35,7 @@
 		"DETECTING_LOCATION": "Patientez pendant que nous détectons votre adresse actuelle..."
 	},
 	"PRODUCTS_VIEW": {
-		"TITLE": "Produits",
+		"TITLE": " : Produits",
 		"BUY_BUTTON": {
 			"PRE": "Payer pour ",
 			"SUF": ""
@@ -80,7 +80,7 @@
 		"TITLE": "Services"
 	},
 	"PROFILE_VIEW": {
-		"TITLE": "Profile",
+		"TITLE": "Mon compte",
 		"NAME": "Nom",
 		"NAME_INPUT": "Changer Nom",
 		"TELEPHONE": "Téléphone",
@@ -104,9 +104,9 @@
 		},
 		"STATUSES": [
 			{
-				"TITLE": "Nous apprêtons votre commande!",
-				"DETAILS": "Vous l'aurez à votre disposition dans %t minutes.",
-				"NOT_PAID_NOTE": "Tenez votre porte-feuille (%s en cash)."
+				"TITLE": "Votre commande est en cours de traitement...",
+				"DETAILS": "Notre livreur vous contactera dans un délai de 30-60 minutes",
+				"NOT_PAID_NOTE": "Veuillez disposer de la somme de (%s en cash). Vous avez la possibilité d'effectuer le paiement en espèces, par Mobile Money ou Orange Money. Coût standard de la livraison (1500 XAF)"
 			},
 			{
 				"TITLE": "Livreur en chemin!",
@@ -130,7 +130,7 @@
 			"NOT_PAID_NOTE": "Tenez votre porte-feuille (%s en cash)."
 		},
 		"DELIVERY_STATUS": {
-			"WE": "Fournisseur",
+			"WE": "Magasin",
 			"CARRIER": "Livreur",
 			"YOU": "Vous"
 		},
@@ -189,7 +189,7 @@
 				"DIVER_TITLE": "Réglages",
 				"ITEMS": {
 					"LANGUAGE": "Langue",
-					"PROFILE": "Profile"
+					"PROFILE": "Mon compte"
 				}
 			},
 			"INFO": {
@@ -223,9 +223,9 @@
 		]
 	},
 	"MERCHANTS_VIEW": {
-		"CLOSE_TO_YOU": "Commerces à proximité",
-		"NAME": "Nom du commerce",
-		"WITH_NAME": "Commerces par Nom"
+		"CLOSE_TO_YOU": "Magasins à proximité",
+		"NAME": "Nom du magasin",
+		"WITH_NAME": "Magasins par Nom"
 	},
 	"NO_SERVER_VIEW": {
 		"NO_SERVER": "Connection au serveur échouée"
@@ -254,10 +254,10 @@
 	"ORDER_INFO": "Info Commande",
 	"CLOSE": "Fermer",
 	"SCAN": "Scanner",
-	"MERCHANTS": "Commerces",
+	"MERCHANTS": "Magasins",
 	"NOT_FOUND": "Pas trouvé(e)!",
 	"IN_STORE": "Dans le Store",
-	"EXIT_STORE": "Hors du Store",
+	"EXIT_STORE": "Sortir du magasin",
 	"FAILED": "Échoué(e)",
 	"CANCELED": "Annulé(e)",
 	"IN_DELIVERY": "En Livraison",
@@ -272,6 +272,7 @@
 	"SELECT": "Selectionner",
 	"LOCATION_NOTES": "Location Notes",
 	"ENTER_NOTES_HERE": "Entrez vos notes",
+	"ORDER_STATUS": "Statut de la commande",
 
 	"ALTERNATIVE_DELIVERY": "Où devons nous livrer votre commande ??"
 }

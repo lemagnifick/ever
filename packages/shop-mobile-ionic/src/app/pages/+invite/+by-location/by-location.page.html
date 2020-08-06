@@ -1,7 +1,7 @@
 <div class="by-location" dir="{{ 'CURRENT_DIRECTION' | translate }}">
 	<h1>{{ 'INVITE_VIEW.YOUR_ADDRESS' | translate }}</h1>
 
-	<h2>{{ 'INVITE_VIEW.LAUNCH_NOTIFICATION' | translate }}</h2>
+	<!--<h2>{{ 'INVITE_VIEW.LAUNCH_NOTIFICATION' | translate }}</h2>-->
 
 	<div style="padding-top: 50px;" *ngIf="detectingLocation">
 		<h3 style="color: white;">
@@ -11,7 +11,6 @@
 	</div>
 
 	<ion-spinner color="light" [hidden]="!detectingLocation"></ion-spinner>
-
 
 	<div *ngIf="!detectingLocation">
 		<input
@@ -30,7 +29,6 @@
 			placeholder="{{ 'EMAIL' | translate }}"
 		/>
 
-
 		<div *ngIf="email">
 			<input
 				class="ion-autocomplete"
@@ -38,47 +36,49 @@
 				placeholder="{{ 'CITY' | translate }}"
 			/>
 
-		<!--<input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+			<!--<input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
 			   [(ngModel)]="city" max-selected-items="1"
 			   items-method="inviteByLocationCtrl?.queryCities(query)" selected-items-label="Selected City"
 			   template-url="templates/autocomplete.html"
 			   placeholder="City" style="margin-bottom: 0" placeholder="{{ 'CITY' | translate }}"/>-->
-		<!-- Angular have no such label:
+			<!-- Angular have no such label:
           cancel-label="{{ 'BACK' | translate }}"       -->
 
-		<div *ngIf="city">
-			<input
-				class="ion-autocomplete"
-				[(ngModel)]="streetAddress"
-				placeholder="{{ 'QUARTER' | translate }}"
-			/>
-
-			<div *ngIf="streetAddress">
+			<div *ngIf="city">
 				<input
 					class="ion-autocomplete"
-					[(ngModel)]="phone"
-					type="number"
-					placeholder="{{ 'PHONE' | translate }}"
+					[(ngModel)]="streetAddress"
+					placeholder="{{ 'QUARTER' | translate }}"
 				/>
-			<!--<input ion-autocomplete readonly class="ion-autocomplete" autocomplete="off" [(ngModel)]="streetAddress"
+
+				<div *ngIf="streetAddress">
+					<input
+						class="ion-autocomplete"
+						[(ngModel)]="phone"
+						type="number"
+						placeholder="{{ 'PHONE' | translate }}"
+					/>
+					<!--<input ion-autocomplete readonly class="ion-autocomplete" autocomplete="off" [(ngModel)]="streetAddress"
 				   max-selected-items="1"
 				   items-method="inviteByLocationCtrl?.queryStreets(query)" selected-items-label="Selected Street"
 				   template-url="templates/autocomplete.html" placeholder="{{ 'STREET' | translate }}"/>-->
-			<!-- Angular have no such label:
+					<!-- Angular have no such label:
               cancel-label="{{ 'BACK' | translate }}"       -->
 
-			<div *ngIf="phone">
-				<ion-button
-					color="secondary"
-					*ngIf="house && (apartment || !isApartment)"
-					expand="block"
-					class="submit-button"
-					(click)="login()"
-				>
-					{{ 'INVITE_VIEW.GET_IN' | translate }}
-				</ion-button>
+					<div *ngIf="phone">
+						<ion-button
+							color="secondary"
+							*ngIf="house && (apartment || !isApartment)"
+							expand="block"
+							class="submit-button"
+							(click)="login()"
+						>
+							{{ 'INVITE_VIEW.GET_IN' | translate }}
+						</ion-button>
+					</div>
+				</div>
+				<!-- house used for phone -->
 			</div>
-
-		</div> <!-- house used for phone -->
+		</div>
 	</div>
 </div>

@@ -102,6 +102,7 @@
 							}}"
 						>
 							<button
+								color="secondary"
 								class="button button-brand col-100"
 								(click)="undo()"
 							>
@@ -123,7 +124,7 @@
 						<span
 							class="waves-effect waves-classic col no-padding-bottom"
 						>
-							<button
+							<ion-button
 								class="button button-assertive col-100"
 								(click)="closePopup()"
 								[ngSwitch]="order?.isCancelled"
@@ -136,7 +137,7 @@
 								<span *ngSwitchCase="true"
 									>{{ 'OK' | translate }}</span
 								>
-							</button>
+							</ion-button>
 						</span>
 					</div>
 				</div>

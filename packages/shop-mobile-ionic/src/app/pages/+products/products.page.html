@@ -10,15 +10,19 @@
 						<span class="merchant-name pr-1">
 							{{ merchant?.name }}
 						</span>
-						<span
-							>{{ 'PRODUCTS_VIEW.TITLE' | translate }}
+						<span>
+							{{ 'PRODUCTS_VIEW.TITLE' | translate }}
 						</span></strong
 					></ion-label
 				>
 			</ion-col>
 
 			<ion-col *ngIf="!inStore" class="col-9 p-1 header-title">
-				<img alt="logo" height="45" src="/assets/imgs/bellem_blanc.png" />
+				<img
+					alt="logo"
+					height="45"
+					src="/assets/imgs/bellem_blanc.png"
+				/>
 			</ion-col>
 			<!--
 			<ion-col class="header-actions">
@@ -47,7 +51,7 @@
 					</small></ion-label
 				>
 			-->
-				<ion-col class="header-actions">
+			<ion-col class="header-actions">
 				<ion-label
 					*ngIf="!navigateToMerchants"
 					(click)="changeStoreMode()"

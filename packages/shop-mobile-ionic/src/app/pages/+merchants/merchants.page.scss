@@ -10,7 +10,6 @@
 	.merchants-list {
 		background: $brand-lighted;
 		margin: 0;
-
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -55,7 +54,7 @@
 		}
 
 		:first-child {
-			margin-top: 0 !important;
+			//margin-top: 0 !important;
 		}
 	}
 }
