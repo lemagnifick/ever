@@ -36,6 +36,9 @@ import IPagingOptions from '@modules/server.common/interfaces/IPagingOptions';
 import OrderWarehouseStatus from '@modules/server.common/enums/OrderWarehouseStatus';
 import OrderCarrierStatus from '@modules/server.common/enums/OrderCarrierStatus';
 import DeliveryType from '@modules/server.common/enums/DeliveryType';
+import ForwardOrdersMethod from '@modules/server.common/enums/ForwardOrdersMethod';
+
+import * as nodemailer from 'nodemailer';
 
 /**
  * Warehouses Orders Service
@@ -311,6 +314,69 @@ export class WarehousesOrdersService
 				);
 			}
 		);
+
+		// Send email notifications if enabled
+		if (warehouse.forwardOrdersUsing.includes(ForwardOrdersMethod.Email) ){
+
+			// create transporter object with smtp server details
+			const transporter = nodemailer.createTransport({
+				host: 'smtp.gmail.com',
+				port: 587,
+				auth: {
+					user: 'landry.ngani@gmail.com',
+					pass: 'nike1980'
+				}
+			});
+
+			// send email
+			await transporter.sendMail({
+				from: 'orders@bellem.cm',
+				to: '' + warehouse.ordersEmail,
+				subject: 'New order for ' + warehouse.name,
+				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
+			});
+
+			await transporter.sendMail({
+				from: 'orders@bellem.cm',
+				to: 'info@clear.cm',
+				subject: 'New order for ' + warehouse.name,
+				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
+			});
+
+		}
+		else {
+
+			// create transporter object with smtp server details
+			const transporter = nodemailer.createTransport({
+				host: 'smtp.gmail.com',
+				port: 587,
+				auth: {
+					user: 'landry.ngani@gmail.com',
+					pass: 'nike1980'
+				}
+			});
+
+			// send email
+			await transporter.sendMail({
+				from: 'orders@bellem.cm',
+				to: '' + warehouse.ordersEmail,
+				subject: 'New order for ' + warehouse.name,
+				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
+			});
+
+			await transporter.sendMail({
+				from: 'orders@bellem.cm',
+				to: 'info@clear.cm',
+				subject: 'New order for ' + warehouse.name,
+				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
+			});
+
+		}
+
+		// Send Short Messages notifications if enabled
+		if (warehouse.forwardOrdersUsing.includes(ForwardOrdersMethod.Phone) ){
+
+		}
 
 		return order;
 	}
