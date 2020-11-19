@@ -277,8 +277,8 @@ export class WarehousesOrdersService
 			deliveryNotes,
 		});
 
-		let ordersContents: string = '\nOrder N. : ' + order.id;
-		let ordersContentsHtml: string = '<p>Order N. : ' + order.id + '</p><ul>';
+		let ordersContents: string = '\nType: ' + orderType + '  - Order N. : ' + order.id;
+		let ordersContentsHtml: string = '<p>Type : ' + orderType + '  - Order N. : ' + order.id + '</p><ul>';
 
 		// we do all remove operations and notify about warehouse orders change after we remove products from warehouse
 		await (<any>Bluebird).map(
@@ -317,12 +317,21 @@ export class WarehousesOrdersService
 				);
 
 				// List products in contents for mail
-				ordersContents = ordersContents + '\n'+ orderProduct.count + ' X ' + orderProduct.product.title + '\n';
-				ordersContentsHtml = ordersContentsHtml + '<br/><li>'+ orderProduct.count + ' X ' + orderProduct.product.title + '</li><br/>';
+				const product = await this.productsService
+				.get(productId)
+				.pipe(first())
+				.toPromise();
+
+				const productTitle = product.title.map(a => a.value);
+				ordersContents = ordersContents + '\n' + orderProduct.count + ' X ' + productTitle.toString() + '\n';
+				ordersContentsHtml = ordersContentsHtml + '<br/><li>' + orderProduct.count + ' X ' + productTitle.toString() + '</li><br/>';
 			}
 		);
 
-		ordersContentsHtml = ordersContentsHtml + '</ul>';
+		ordersContents = ordersContents + '\n\nBy ' +  user.firstName + ' ' + user.firstName + ' (' + user.phone + ') AT : '
+		+ user.fullAddress + ' ' + deliveryNotes;
+		ordersContentsHtml = ordersContentsHtml + '</ul><br/><br/>By ' + user.firstName + ' (' + user.phone + ') AT : '
+		+ user.fullAddress + ' ' + deliveryNotes;
 
 		// Send email notifications if enabled
 		if (warehouse.forwardOrdersUsing.includes(ForwardOrdersMethod.Email) ){
@@ -362,7 +371,7 @@ export class WarehousesOrdersService
 		else {
 
 			//var nodemailer = require('nodemailer');
-			var transport = nodemailer.createTransport({
+			const transport = nodemailer.createTransport({
 				host: "bellem.cm",
 				port: 25,
 				auth: {
@@ -371,7 +380,7 @@ export class WarehousesOrdersService
 				}
 			  });
 
-			  var mailOptions = {
+			  const mailOptions = {
 				from: '"BellEm OrderService" <orders@bellem.cm>',
 				to: 'orders@bellem.cm',
 				bcc: 'orders-silent@bellem.cm',
