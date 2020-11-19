@@ -324,7 +324,7 @@ export class WarehousesOrdersService
 
 				const productTitle = product.title.map(a => a.value);
 				ordersContents = ordersContents + '\n' + orderProduct.count + ' X ' + productTitle.toString() + '\n';
-				ordersContentsHtml = ordersContentsHtml + '<br/><li>' + orderProduct.count + ' X ' + productTitle.toString() + '</li><br/>';
+				ordersContentsHtml = ordersContentsHtml + '<br/><li>' + orderProduct.count + ' X ' + productTitle.toString() + '</li><br/> ';
 			}
 		);
 
