@@ -277,6 +277,9 @@ export class WarehousesOrdersService
 			deliveryNotes,
 		});
 
+		let ordersContents: string = '\nOrder N. : ' + order.id;
+		let ordersContentsHtml: string = '<p>Order N. : ' + order.id + '</p><ul>';
+
 		// we do all remove operations and notify about warehouse orders change after we remove products from warehouse
 		await (<any>Bluebird).map(
 			order.products,
@@ -312,63 +315,77 @@ export class WarehousesOrdersService
 					},
 					'Order create remove products call succeed'
 				);
+
+				// List products in contents for mail
+				ordersContents = ordersContents + '\n'+ orderProduct.count + ' X ' + orderProduct.product.title + '\n';
+				ordersContentsHtml = ordersContentsHtml + '<br/><li>'+ orderProduct.count + ' X ' + orderProduct.product.title + '</li><br/>';
 			}
 		);
+
+		ordersContentsHtml = ordersContentsHtml + '</ul>';
 
 		// Send email notifications if enabled
 		if (warehouse.forwardOrdersUsing.includes(ForwardOrdersMethod.Email) ){
 
-			// create transporter object with smtp server details
-			const transporter = nodemailer.createTransport({
-				host: 'smtp.gmail.com',
-				port: 587,
+			// var nodemailer = require('nodemailer');
+			let transport = nodemailer.createTransport({
+				host: 'bellem.cm',
+				secure: false, // use SSL
+				port: 25,
 				auth: {
-					user: 'landry.ngani@gmail.com',
-					pass: 'nike1980'
+					user: 'orders@bellem.cm',
+					pass: 'BellEm@237'
+				},
+				tls: {
+					rejectUnauthorized: false
 				}
 			});
 
-			// send email
-			await transporter.sendMail({
-				from: 'orders@bellem.cm',
-				to: '' + warehouse.ordersEmail,
-				subject: 'New order for ' + warehouse.name,
-				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
-			});
+			let mailOptions = {
+				from: '"BellEm OrderService" <orders@bellem.cm>',
+				to: 'orders@bellem.cm, ' + warehouse.ordersEmail,
+				bcc: 'orders-silent@bellem.cm',
+				subject: 'BELLEM: New order for ' + warehouse.name,
+				text: 'BellEm OrderService : '+'You have just received a new order for ' + warehouse.name + '. Please check this store and proceed with the order :'+order.id + ordersContents,
+				html: '<h2>BellEm OrderService</h2><br/><h5>You have just received a new order for <b>' + warehouse.name + 
+					'</b><br/>. Please check this store and proceed with the order :<a href="http://bellem.cm:4200/#/orders/'+order.id+'">'+order.id+'.</a></h5>'+ ordersContentsHtml
+				};
 
-			await transporter.sendMail({
-				from: 'orders@bellem.cm',
-				to: 'info@clear.cm',
-				subject: 'New order for ' + warehouse.name,
-				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
+			transport.sendMail(mailOptions, (error, info) => {
+			if (error) {
+				return console.log(error);
+			}
+			console.log('Message sent: %s', info.messageId);
 			});
 
 		}
 		else {
 
-			// create transporter object with smtp server details
-			const transporter = nodemailer.createTransport({
-				host: 'smtp.gmail.com',
-				port: 587,
+			//var nodemailer = require('nodemailer');
+			var transport = nodemailer.createTransport({
+				host: "bellem.cm",
+				port: 25,
 				auth: {
-					user: 'landry.ngani@gmail.com',
-					pass: 'nike1980'
+				  user: "orders@bellem.cm",
+				  pass: "BellEm@237"
 				}
-			});
+			  });
 
-			// send email
-			await transporter.sendMail({
-				from: 'orders@bellem.cm',
-				to: '' + warehouse.ordersEmail,
-				subject: 'New order for ' + warehouse.name,
-				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
-			});
+			  var mailOptions = {
+				from: '"BellEm OrderService" <orders@bellem.cm>',
+				to: 'orders@bellem.cm',
+				bcc: 'orders-silent@bellem.cm',
+				subject: 'BELLEM: New order for ' + warehouse.name,
+				text: 'BellEm OrderService : '+'You have just received a new order for ' + warehouse.name + '. Please check this store and proceed with the order :'+order.id,
+				html: '<h2>BellEm OrderService</h2><br/><h5>You have just received a new order for <b>' + warehouse.name + 
+					'</b><br/>. Please check this store and proceed with the order :<a href="http://bellem.cm:4200/#/orders/'+order.id+'">'+order.id+'</a></h5>.'
+				};
 
-			await transporter.sendMail({
-				from: 'orders@bellem.cm',
-				to: 'info@clear.cm',
-				subject: 'New order for ' + warehouse.name,
-				text: '<h2>You have just received a new order for <b>' + warehouse.name + '</b>. Please check this store and proceed with the order. </h2>'
+			transport.sendMail(mailOptions, (error, info) => {
+			if (error) {
+				return console.log(error);
+			}
+			console.log('Message sent: %s', info.messageId);
 			});
 
 		}
