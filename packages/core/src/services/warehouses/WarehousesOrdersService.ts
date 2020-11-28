@@ -277,6 +277,7 @@ export class WarehousesOrdersService
 			deliveryNotes,
 		});
 
+		//Strings values used for orders contents details in mail...
 		let ordersContents: string = '\nType: ' + orderType + '  - Order N. : ' + order.id;
 		let ordersContentsHtml: string = '<p>Type : ' + orderType + '  - Order N. : ' + order.id + '</p><ul>';
 
@@ -375,8 +376,8 @@ export class WarehousesOrdersService
 				host: "bellem.cm",
 				port: 25,
 				auth: {
-				  user: "orders@bellem.cm",
-				  pass: "BellEm@237"
+				  	user: "orders@bellem.cm",
+				  	pass: "BellEm@237"
 				}
 			  });
 
